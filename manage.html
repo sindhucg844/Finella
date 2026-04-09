@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Manage Money</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body style="margin:0;font-family:Arial;background:linear-gradient(135deg,#AAC9CE,#C9BBC8,#F3DBCF);">
+
+<!-- NAVBAR -->
+
+<div style="padding:15px 40px;display:flex;justify-content:space-between;align-items:center;background:white;box-shadow:0 3px 10px rgba(0,0,0,0.1);">
+
+<h2>FINELLA</h2>
+
+<div>
+<a href="index.html" style="margin:15px;text-decoration:none;color:black;">Home</a>
+<a href="earn.html" style="margin:15px;text-decoration:none;color:black;">Earn</a>
+<a href="save.html" style="margin:15px;text-decoration:none;color:black;">Save</a>
+<a href="manage.html" style="margin:15px;text-decoration:none;color:black;">Manage</a>
+<a href="invest.html" style="margin:15px;text-decoration:none;color:black;">Invest</a>
+</div>
+
+</div>
+
+<!-- TITLE -->
+
+<div style="text-align:center;padding:40px;color:#333;">
+
+<h1>Manage Your Money 💳</h1>
+<p>Track your income, expenses and plan your budget visually</p>
+
+</div>
+
+<!-- CARDS -->
+
+<div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;padding-bottom:60px;">
+
+<!-- EXPENSE TRACKER -->
+
+<div style="width:300px;background:white;padding:30px;border-radius:25px;box-shadow:0 10px 25px rgba(0,0,0,0.1);text-align:center;">
+
+<h3 style="color:#5a5a5a;">Expense Tracker</h3>
+
+<p>Income</p>
+
+<input id="income" placeholder="Enter income"
+style="width:80%;padding:12px;border-radius:25px;border:none;background:#AAC9CE;">
+
+<p>Expenses</p>
+
+<input id="expense" placeholder="Enter expenses"
+style="width:80%;padding:12px;border-radius:25px;border:none;background:#B6B4C2;">
+
+<br><br>
+
+<button onclick="calculateMoney()"
+style="padding:10px 20px;border:none;border-radius:20px;background:#E5C1CD;cursor:pointer;">
+Check Balance
+</button>
+
+<p id="result" style="margin-top:15px;font-weight:bold;"></p>
+
+</div>
+
+
+<!-- BUDGET PLANNER -->
+
+<div style="width:300px;background:white;padding:30px;border-radius:25px;box-shadow:0 10px 25px rgba(0,0,0,0.1);text-align:center;">
+
+<h3 style="color:#5a5a5a;">Budget Planner (50-30-20)</h3>
+
+<p>Monthly Income</p>
+
+<input id="budgetIncome" placeholder="Enter income"
+style="width:80%;padding:12px;border-radius:25px;border:none;background:#C9BBC8;">
+
+<br><br>
+
+<button onclick="createBudget()"
+style="padding:10px 20px;border:none;border-radius:20px;background:#AAC9CE;cursor:pointer;">
+Create Budget
+</button>
+
+<br><br>
+
+<canvas id="budgetChart"></canvas>
+
+</div>
+
+
+<!-- EXPENSE PIE CHART -->
+
+<div style="width:300px;background:white;padding:30px;border-radius:25px;box-shadow:0 10px 25px rgba(0,0,0,0.1);text-align:center;">
+
+<h3 style="color:#5a5a5a;">Monthly Expenses</h3>
+
+<p>Food</p>
+
+<input id="food"
+style="width:80%;padding:12px;border-radius:25px;border:none;background:#AAC9CE;">
+
+<p>Travel</p>
+
+<input id="travel"
+style="width:80%;padding:12px;border-radius:25px;border:none;background:#E5C1CD;">
+
+<p>Shopping</p>
+
+<input id="shopping"
+style="width:80%;padding:12px;border-radius:25px;border:none;background:#F3DBCF;">
+
+<br><br>
+
+<button onclick="createExpenseChart()"
+style="padding:10px 20px;border:none;border-radius:20px;background:#C9BBC8;cursor:pointer;">
+Show Chart
+</button>
+
+<br><br>
+
+<canvas id="expenseChart"></canvas>
+
+</div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function calculateMoney(){
+
+let income=document.getElementById("income").value
+let expense=document.getElementById("expense").value
+
+let balance=income-expense
+
+document.getElementById("result").innerText="Remaining Money ₹ "+balance
+
+}
+
+function createBudget(){
+
+let income=document.getElementById("budgetIncome").value
+
+let needs=income*0.5
+let wants=income*0.3
+let savings=income*0.2
+
+let ctx=document.getElementById("budgetChart")
+
+new Chart(ctx,{
+type:"bar",
+
+data:{
+labels:["Needs","Wants","Savings"],
+
+datasets:[{
+data:[needs,wants,savings],
+backgroundColor:["#AAC9CE","#C9BBC8","#F3DBCF"]
+}]
+}
+
+})
+
+}
+
+function createExpenseChart(){
+
+let food=document.getElementById("food").value
+let travel=document.getElementById("travel").value
+let shopping=document.getElementById("shopping").value
+
+let ctx=document.getElementById("expenseChart")
+
+new Chart(ctx,{
+
+type:"pie",
+
+data:{
+labels:["Food","Travel","Shopping"],
+
+datasets:[{
+
+data:[food,travel,shopping],
+
+backgroundColor:["#AAC9CE","#E5C1CD","#F3DBCF"]
+
+}]
+}
+
+})
+
+}
+
+</script>
+
+</body>
+</html>

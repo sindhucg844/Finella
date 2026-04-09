@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Investment Calculator</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+text-align:center;
+min-height:100vh;
+background: linear-gradient(135deg,#AAC9CE,#B6B4C2,#C9BBC8,#E5C1CD,#F3DBCF);
+}
+
+h1{
+margin-top:40px;
+}
+
+.container{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:40px;
+padding:60px;
+}
+
+.card{
+background:white;
+width:220px;
+padding:25px;
+border-radius:15px;
+text-align:center;
+text-decoration:none;
+color:#333;
+box-shadow:0 8px 18px rgba(0,0,0,0.15);
+cursor:pointer;
+}
+
+.card img{
+width:70px;
+height:70px;
+}
+
+.calc-box{
+display:none;
+background:#f7c8d0;
+padding:30px;
+border-radius:15px;
+width:260px;
+margin:auto;
+}
+
+input{
+width:90%;
+padding:8px;
+margin:6px;
+}
+
+button{
+padding:10px 20px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+background:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+</style>
+
+<script>
+
+function showPage(page){
+
+document.getElementById("home").style.display="none";
+
+document.getElementById("mutual").style.display="none";
+document.getElementById("fd").style.display="none";
+document.getElementById("gold").style.display="none";
+document.getElementById("stock").style.display="none";
+
+document.getElementById(page).style.display="block";
+}
+
+function goBack(){
+
+document.getElementById("home").style.display="block";
+
+document.getElementById("mutual").style.display="none";
+document.getElementById("fd").style.display="none";
+document.getElementById("gold").style.display="none";
+document.getElementById("stock").style.display="none";
+}
+
+</script>
+
+</head>
+
+<body>
+
+<!-- HOME PAGE -->
+
+<div id="home">
+
+<h1>Invest Your Money</h1>
+<p>Select an investment option</p>
+
+<div class="container">
+
+<div class="card" onclick="showPage('mutual')">
+<img src="https://img.icons8.com/color/96/money-bag.png">
+<h3>Mutual Funds</h3>
+<p>Grow your money with SIP.</p>
+</div>
+
+<div class="card" onclick="showPage('fd')">
+<img src="https://img.icons8.com/color/96/bank.png">
+<h3>Fixed Deposit</h3>
+<p>Safe fixed returns.</p>
+</div>
+
+<div class="card" onclick="showPage('gold')">
+<img src="https://img.icons8.com/color/96/gold-bars.png">
+<h3>Gold Investment</h3>
+<p>Secure gold savings.</p>
+</div>
+
+<div class="card" onclick="showPage('stock')">
+<img src="https://img.icons8.com/color/96/combo-chart.png">
+<h3>Stock Market</h3>
+<p>Buy & sell shares.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MUTUAL FUND -->
+
+<div id="mutual" class="calc-box">
+
+<img src="https://img.icons8.com/color/96/money-bag.png">
+
+<h2>Mutual Fund SIP</h2>
+
+<input type="number" placeholder="Monthly Investment ₹">
+
+<input type="number" placeholder="Return %">
+
+<input type="number" placeholder="Years">
+
+<button>Calculate</button>
+
+<br><br>
+
+<button onclick="goBack()">Go Back</button>
+
+</div>
+
+
+<!-- FD -->
+
+<div id="fd" class="calc-box">
+
+<img src="https://img.icons8.com/color/96/bank.png">
+
+<h2>FD Calculator</h2>
+
+<input type="number" placeholder="Deposit Amount ₹">
+
+<input type="number" placeholder="Interest %">
+
+<input type="number" placeholder="Years">
+
+<button>Calculate</button>
+
+<br><br>
+
+<button onclick="goBack()">Go Back</button>
+
+</div>
+
+
+<!-- GOLD -->
+
+<div id="gold" class="calc-box">
+
+<img src="https://img.icons8.com/color/96/gold-bars.png">
+
+<h2>Gold Investment</h2>
+
+<input type="number" placeholder="Gold Price per gram ₹">
+
+<input type="number" placeholder="Grams">
+
+<input type="number" placeholder="Future Price ₹">
+
+<button>Calculate</button>
+
+<br><br>
+
+<button onclick="goBack()">Go Back</button>
+
+</div>
+
+
+<!-- STOCK -->
+
+<div id="stock" class="calc-box">
+
+<img src="https://img.icons8.com/color/96/combo-chart.png">
+
+<h2>Stock Profit Calculator</h2>
+
+<input type="number" placeholder="Buy Price ₹">
+
+<input type="number" placeholder="Sell Price ₹">
+
+<input type="number" placeholder="Number of Shares">
+
+<button>Calculate Profit</button>
+
+<br><br>
+
+<button onclick="goBack()">Go Back</button>
+
+</div>
+
+</body>
+</html>
